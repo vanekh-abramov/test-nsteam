@@ -1,12 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
-import { API } from '../../constants/internalLinks'
+import { API_NEWS } from '../../constants/internalLinks'
 
-export const fetchDictionary = createAsyncThunk(
+export const fetchNews = createAsyncThunk(
   'data/fetchData',
   async (thunkAPI) => {
     try {
-      const response = await axios.get(API)
+      const response = await axios.get(API_NEWS)
       return response.data
     } catch (e) {
       let message = 'Error'

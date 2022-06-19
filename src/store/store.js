@@ -1,8 +1,8 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import WordSlice from './reducers/WordSlice'
+import NewsSlice from './reducers/NewsSlice'
 
 const rootReducer = combineReducers({
-  data: WordSlice
+  data: NewsSlice
 })
 
 export const setupStore = () => {
