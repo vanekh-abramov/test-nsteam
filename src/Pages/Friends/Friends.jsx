@@ -9,11 +9,7 @@ const Friends = () => {
 
   useEffect(() => {
     dispatch(fetchUsers());
-  }, []);
-
-  useEffect(() => {
-    console.log("friends: " + JSON.stringify(...data));
-  }, [data]);
+  }, [dispatch]);
 
   return (
     <>

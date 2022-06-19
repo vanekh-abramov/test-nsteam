@@ -9,11 +9,7 @@ const News = () => {
 
   useEffect(() => {
     dispatch(fetchNews());
-  }, []);
-
-  useEffect(() => {
-    console.log("news: " + JSON.stringify(data));
-  }, [data]);
+  }, [dispatch]);
 
   return (
     <>

@@ -7,7 +7,6 @@ export const fetchNews = createAsyncThunk(
   async (thunkAPI) => {
     try {
       const response = await axios.get(API_NEWS)
-      console.log(response.data)
       return response.data
     } catch (e) {
       let message = 'Error'
@@ -20,11 +19,10 @@ export const fetchNews = createAsyncThunk(
 )
 
 export const fetchUsers = createAsyncThunk(
-  'data/fetchData',
+  'users/fetchUsers',
   async (thunkAPI) => {
     try {
       const response = await axios.get(API_USERS)
-      console.log(response.data)
       return response.data
     } catch (e) {
       let message = 'Error'
