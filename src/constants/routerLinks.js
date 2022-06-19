@@ -1,0 +1,5 @@
+export const HOME_ROUTE = '/'
+export const FRIENDS_ROUTE = '/friends'
+export const LOGIN_ROUTE = '/login'
+export const NEWS_ROUTE = '/news'
+export const PROFILE_ROUTE = '/profile'
