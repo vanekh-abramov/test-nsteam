@@ -15,7 +15,7 @@ const App = () => {
       <section className={classes.section}>
         <div className={classes.nav_bar}>
           <NavLink className={classes.link} to={HOME_ROUTE}>Home</NavLink>
-          <NavLink className={classes.link} to={PROFILE_ROUTE}>Profile</NavLink>
+          <NavLink className={classes.link} to={PROFILE_ROUTE + '/:1'}>Profile</NavLink>
           <NavLink className={classes.link} to={FRIENDS_ROUTE}>Friends</NavLink>
           <NavLink className={classes.link} to={NEWS_ROUTE}>News</NavLink>
         </div>

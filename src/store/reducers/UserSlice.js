@@ -1,4 +1,4 @@
-import { fetchNews } from './ActionCreators'
+import { fetchUsers } from './ActionCreators'
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
@@ -7,25 +7,25 @@ const initialState = {
   error: ''
 }
 
-export const NewsSlice = createSlice({
-  name: 'news',
+export const UserSlice = createSlice({
+  name: 'users',
   initialState,
   reducers: {},
   extraReducers: {
-    [fetchNews.pending.type]: (state) => {
+    [fetchUsers.pending.type]: (state) => {
       state.status = true
       state.error = ''
     },
-    [fetchNews.fulfilled.type]: (state, action) => {
+    [fetchUsers.fulfilled.type]: (state, action) => {
       state.status = false
       state.data = action.payload
       state.error = ''
     },
-    [fetchNews.rejected.type]: (state, action) => {
+    [fetchUsers.rejected.type]: (state, action) => {
       state.status = false
       state.error = action.payload
     }
   }
 })
 
-export default NewsSlice.reducer
+export default UserSlice.reducer
