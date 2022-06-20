@@ -1,23 +1,30 @@
 import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { useNavigate } from "react-router-dom";
+import { PROFILE_ROUTE } from "../../constants/routerLinks";
+import { useDispatch, useSelector } from 'react-redux'
 import { fetchUsers } from "../../store/reducers/ActionCreators";
 import classes from "./Friends.module.scss";
 
 const Friends = () => {
-  const { data, status, error } = useAppSelector((state) => state.users);
-  const dispatch = useAppDispatch();
+  const { data, status, error } = useSelector((state) => state.users);
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   useEffect(() => {
     dispatch(fetchUsers());
   }, [dispatch]);
+
+  const selectUser = (id) => {
+    navigate(PROFILE_ROUTE + `/:${Object.values(id)}`)
+  };
 
   return (
     <>
       {status && <p>Loading...</p>}
       {error && <p>Error {error}</p>}
       <div className={classes.friends}>
-        {data?.map(({ name, username, email }) => (
-          <div className={classes.user_card}>
+        {data?.map(({ name, username, email, id }) => (
+          <div key={id} className={classes.user_card} onClick={() => selectUser({id})}>
             <p className={classes.name}>
               <b>Name:</b> {name}
             </p>

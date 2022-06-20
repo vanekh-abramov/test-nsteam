@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { useDispatch, useSelector } from 'react-redux'
 import { fetchNews } from "../../store/reducers/ActionCreators";
 import classes from "./News.module.scss";
 
 const News = () => {
-  const { data, status, error } = useAppSelector((state) => state.news);
-  const dispatch = useAppDispatch();
+  const { data, status, error } = useSelector((state) => state.news);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchNews());

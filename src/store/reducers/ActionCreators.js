@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
-import { API_NEWS, API_USERS } from '../../constants/internalLinks'
+import { API_NEWS, API_USERS, API_USER_ID, API_USER_POSTS } from '../../constants/internalLinks'
 
 export const fetchNews = createAsyncThunk(
   'data/fetchData',
@@ -23,6 +23,38 @@ export const fetchUsers = createAsyncThunk(
   async (thunkAPI) => {
     try {
       const response = await axios.get(API_USERS)
+      return response.data
+    } catch (e) {
+      let message = 'Error'
+      if (e instanceof Error) {
+        message = e.message
+      }
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
+export const fetchUserId = createAsyncThunk(
+  'user/fetchUserId',
+  async ( id, thunkAPI ) => {
+    try {
+      const response = await axios.get(API_USER_ID + id)
+      return response.data
+    } catch (e) {
+      let message = 'Error'
+      if (e instanceof Error) {
+        message = e.message
+      }
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
+export const fetchUserPosts = createAsyncThunk(
+  'user/fetchUserPosts',
+  async ( id, thunkAPI ) => {
+    try {
+      const response = await axios.get(API_USER_POSTS + id)
       return response.data
     } catch (e) {
       let message = 'Error'

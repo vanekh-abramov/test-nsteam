@@ -1,9 +1,66 @@
-import React from 'react'
+import { useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUserId, fetchUserPosts } from "../../store/reducers/ActionCreators";
+import classes from "./Profile.module.scss";
 
 const Profile = () => {
-  return (
-    <div>Profile</div>
-  )
-}
+  const params = useParams();
+  const { data, status, error } = useSelector((state) => state.userId);
+  const { posts, statusPosts, errorPosts } = useSelector((state) => state.userPosts);
+  const dispatch = useDispatch();
 
-export default Profile
+  useEffect(() => {
+    dispatch(fetchUserId(params.id.slice(1)));
+    dispatch(fetchUserPosts(params.id.slice(1)));
+  }, [dispatch, params]);
+
+  useEffect(() => {
+    console.log(posts)
+  }, [posts])
+
+  return (
+    <div className={classes.profile}>
+      {status && <p>Loading...</p>}
+      {error && <p>Error {error}</p>}
+      <div className={classes.profile_card}>
+        <div className={classes.profile_head}>
+          <p className={classes.profile_name}>
+            <b>Name: </b>
+            {data.name}
+          </p>
+          <p className={classes.profile_username}>
+            <b>Username: </b>
+            {data.username}
+          </p>
+          <a className={classes.profile_phone} href={`tel:${data.phone}`}>
+            <b>Phone: </b>
+            {data.phone}
+          </a>
+          <a className={classes.profile_email} href={`mailto:${data.email}`}>
+            <b>Email: </b>
+            {data.email}
+          </a>
+          <a className={classes.profile_website} href={data.website}>
+            <b>Website: </b>
+            {data.website}
+          </a>
+        </div>
+
+        <div className={classes.profile_address}>
+          <p className={classes.profile_city}><b>City: </b>{data.address?.city}</p>
+          <p className={classes.profile_street}><b>Street: </b>{data.address?.street}</p>
+        </div>
+      </div>
+      {statusPosts && <p>Loading...</p>}
+      {errorPosts && <p>Error {errorPosts}</p>}
+      <div className={classes.posts_wrapper}>
+        {/* {posts.map((el) => (
+          <p>{el.id}</p>
+        ))} */}
+      </div>
+    </div>
+  );
+};
+
+export default Profile;
