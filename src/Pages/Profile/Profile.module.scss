@@ -16,4 +16,21 @@
       }
     }
   }
+  .posts_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    line-height: 1.5rem;
+    align-items: center;
+    .post_part {
+      font-size: 1.5rem;
+    }
+    .post_card {
+      min-width: 100%;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      border: 0.2rem solid black;
+    }
+  }
 }

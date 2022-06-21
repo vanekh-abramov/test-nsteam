@@ -55,9 +55,14 @@ const Profile = () => {
       {statusPosts && <p>Loading...</p>}
       {errorPosts && <p>Error {errorPosts}</p>}
       <div className={classes.posts_wrapper}>
-        {/* {posts.map((el) => (
-          <p>{el.id}</p>
-        ))} */}
+        <b className={classes.post_part}>Posts</b>
+        {posts.map((el) => (
+          <div className={classes.post_card}>
+            <p><b>Number: </b>{el.id}</p>
+            <p className={classes.post_body}><b>Post: </b>{el.body}</p>
+            <p className={classes.post_title}><b>Title: </b>{el.title}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
