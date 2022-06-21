@@ -15,10 +15,6 @@ const Profile = () => {
     dispatch(fetchUserPosts(params.id.slice(1)));
   }, [dispatch, params]);
 
-  useEffect(() => {
-    console.log(posts)
-  }, [posts])
-
   return (
     <div className={classes.profile}>
       {status && <p>Loading...</p>}

@@ -1,4 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import LoginSlice from './reducers/LoginSlice'
 import NewsSlice from './reducers/NewsSlice'
 import UserIdSlice from './reducers/UserIdSlice'
 import UserPostsSlice from './reducers/UserPostsSlice'
@@ -8,7 +9,8 @@ const rootReducer = combineReducers({
   users: UserSlice,
   news: NewsSlice,
   userId: UserIdSlice,
-  userPosts: UserPostsSlice
+  userPosts: UserPostsSlice,
+  chekLogin: LoginSlice
 })
 
 export const setupStore = () => {
