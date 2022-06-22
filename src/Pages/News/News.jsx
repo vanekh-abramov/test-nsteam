@@ -16,18 +16,15 @@ const News = () => {
       {status && <p>Loading...</p>}
       {error && <p>Error {error}</p>}
       <div className={classes.news}>
-        {data?.articles?.map(
-          ({ author, content, description, publishedAt }) => (
+        {data?.map(
+          ({ id, body, title }) => (
             <div className={classes.news_card}>
               <p className={classes.author}>
-                <b>Author:</b> {author || "None"}
+                <b>Number:</b> {id}
               </p>
-              <p className={classes.content}>{content}</p>
+              <p className={classes.content}>{body}</p>
               <p className={classes.description}>
-                <b>Description:</b> {description}
-              </p>
-              <p className={classes.publishedAt}>
-                <b>Date:</b> {publishedAt}
+                <b>Description:</b> {title}
               </p>
             </div>
           )
