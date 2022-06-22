@@ -18,7 +18,7 @@ const News = () => {
       <div className={classes.news}>
         {data?.map(
           ({ id, body, title }) => (
-            <div className={classes.news_card}>
+            <div className={classes.news_card} key={id}>
               <p className={classes.author}>
                 <b>Number:</b> {id}
               </p>

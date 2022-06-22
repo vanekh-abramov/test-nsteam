@@ -52,11 +52,11 @@ const Profile = () => {
       {errorPosts && <p>Error {errorPosts}</p>}
       <div className={classes.posts_wrapper}>
         <b className={classes.post_part}>Posts</b>
-        {posts.map((el) => (
-          <div className={classes.post_card}>
-            <p><b>Number: </b>{el.id}</p>
-            <p className={classes.post_body}><b>Post: </b>{el.body}</p>
-            <p className={classes.post_title}><b>Title: </b>{el.title}</p>
+        {posts.map(({title, body, id}) => (
+          <div className={classes.post_card} key={id}>
+            <p><b>Number: </b>{id}</p>
+            <p className={classes.post_body}><b>Post: </b>{body}</p>
+            <p className={classes.post_title}><b>Title: </b>{title}</p>
           </div>
         ))}
       </div>
