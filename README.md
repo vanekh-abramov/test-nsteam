@@ -1,4 +1,5 @@
 **Deploy on Netlify**: https://lighthearted-dieffenbachia-f4c866.netlify.app/
+**Deploy on GitHubPages**: https://vanekh-abramov.github.io/
 
 # Getting Started with Create React App
 
