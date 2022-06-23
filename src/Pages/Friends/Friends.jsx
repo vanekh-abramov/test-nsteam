@@ -4,6 +4,7 @@ import { PROFILE_ROUTE } from "../../constants/routerLinks";
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchUsers } from "../../store/reducers/ActionCreators";
 import classes from "./Friends.module.scss";
+import UserCard from "../../Components/User/UserCard";
 
 const Friends = () => {
   const { data, status, error } = useSelector((state) => state.users);
@@ -24,18 +25,7 @@ const Friends = () => {
       {error && <p>Error {error}</p>}
       <div className={classes.friends}>
         {data?.map(({ name, username, email, id }) => (
-          <div key={id} className={classes.user_card} onClick={() => selectUser({id})}>
-            <p className={classes.name}>
-              <b>Name:</b> {name}
-            </p>
-            <p className={classes.username}>
-              <b>Username: </b>
-              {username}
-            </p>
-            <p className={classes.email}>
-              <b>Email:</b> {email}
-            </p>
-          </div>
+          <UserCard name={name} username={username} email={email} id={id} selectUser={selectUser}/>
         ))}
       </div>
     </>
