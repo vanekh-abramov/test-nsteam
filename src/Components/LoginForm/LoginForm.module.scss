@@ -1,0 +1,18 @@
+.login_form {
+  display: flex;
+  flex-direction: column;
+  border: 0.2rem solid black;
+  margin: 0.5rem;
+  padding: 1rem;
+  .login_subtitle {
+    font-style: italic;
+    font-size: 0.8rem;
+  }
+  input {
+    padding: 0.3rem;
+    margin: 1rem 0;
+  }
+  .login_submit {
+    cursor: pointer;
+  }
+}

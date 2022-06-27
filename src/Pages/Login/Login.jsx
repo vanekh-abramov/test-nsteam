@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import classes from "./Login.module.scss";
 import { authLogin } from "../../store/reducers/LoginSlice";
+import LoginForm from "../../Components/LoginForm/LoginForm";
 
 const Login = () => {
   const [login, setLogin] = useState("");
@@ -45,34 +46,12 @@ const Login = () => {
   return (
     <div className={classes.login}>
       <p className={classes.login_title}>Authorization</p>
-      <form
-        className={classes.login_form}
-        action="submit"
-        onSubmit={submitLogin}
-      >
-        <span className={classes.login_subtitle}>login</span>
-        <input
-          className={classes.input_login}
-          type="login"
-          name="login"
-          id="1"
-          placeholder="E-mail"
-          onChange={inputLogin}
-        />
-        <span className={classes.login_subtitle}>password</span>
-        <input
-          className={classes.input_password}
-          type="password"
-          name="password"
-          id="2"
-          placeholder="Password"
-          onChange={inputPassword}
-        />
-        {emailError && <p>{emailError}</p>}
-        <button type="submit" className={classes.login_submit}>
-          Submit
-        </button>
-      </form>
+      <LoginForm
+        submitLogin={submitLogin}
+        inputLogin={inputLogin}
+        inputPassword={inputPassword}
+        emailError={emailError}
+      />
     </div>
   );
 };
