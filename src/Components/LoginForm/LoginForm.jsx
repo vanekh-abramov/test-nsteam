@@ -1,10 +1,18 @@
 import React from "react";
 import classes from "./LoginForm.module.scss";
 
-const LoginForm = ({ submitLogin, inputLogin, inputPassword, emailError }) => {
+const LoginForm = ({
+  submitLogin,
+  inputLogin,
+  inputPassword,
+  emailError,
+  login_subtitle,
+  password_subtitle,
+  button_title,
+}) => {
   return (
     <form className={classes.login_form} action="submit" onSubmit={submitLogin}>
-      <span className={classes.login_subtitle}>login</span>
+      <span className={classes.login_subtitle}>{login_subtitle}</span>
       <input
         className={classes.input_login}
         type="login"
@@ -13,7 +21,7 @@ const LoginForm = ({ submitLogin, inputLogin, inputPassword, emailError }) => {
         placeholder="E-mail"
         onChange={inputLogin}
       />
-      <span className={classes.login_subtitle}>password</span>
+      <span className={classes.login_subtitle}>{password_subtitle}</span>
       <input
         className={classes.input_password}
         type="password"
@@ -24,7 +32,7 @@ const LoginForm = ({ submitLogin, inputLogin, inputPassword, emailError }) => {
       />
       {emailError && <p>{emailError}</p>}
       <button type="submit" className={classes.login_submit}>
-        Submit
+        {button_title}
       </button>
     </form>
   );

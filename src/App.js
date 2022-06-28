@@ -8,6 +8,8 @@ import { authLogin } from './store/reducers/LoginSlice'
 
 const App = () => {
   let { userLogin } = useSelector((state) => state.chekLogin);
+  const profileCheck = userLogin ? PROFILE_ROUTE + '/:1' : LOGIN_ROUTE
+  const friendsCheck = userLogin ? FRIENDS_ROUTE : LOGIN_ROUTE
   const dispatch = useDispatch()
 
   const authLogout = () => {
@@ -18,18 +20,15 @@ const App = () => {
     <div className={classes.wrapper}>
       <header className={classes.header}>
         <h1 className={classes.logo}>LoGo</h1>
-        {userLogin && (
+        {userLogin ? (
           <button onClick={authLogout}>Logout</button>
-        )}
-        {!userLogin && (
-          <NavLink to={LOGIN_ROUTE}>Login</NavLink>
-        )}
+        ) : <NavLink to={LOGIN_ROUTE}>Login</NavLink>}
       </header>
       <section className={classes.section}>
         <div className={classes.nav_bar}>
           <NavLink className={classes.link} to={HOME_ROUTE}>Home</NavLink>
-          <NavLink className={classes.link} to={userLogin ? PROFILE_ROUTE + '/:1' : LOGIN_ROUTE}>Profile</NavLink>
-          <NavLink className={classes.link} to={userLogin ? FRIENDS_ROUTE : LOGIN_ROUTE}>Friends</NavLink>
+          <NavLink className={classes.link} to={profileCheck}>Profile</NavLink>
+          <NavLink className={classes.link} to={friendsCheck}>Friends</NavLink>
           <NavLink className={classes.link} to={NEWS_ROUTE}>News</NavLink>
         </div>
         <div className={classes.content}>

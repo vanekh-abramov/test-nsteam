@@ -9,11 +9,7 @@ export const fetchNews = createAsyncThunk(
       const response = await axios.get(API_POSTS)
       return response.data
     } catch (e) {
-      let message = 'Error'
-      if (e instanceof Error) {
-        message = e.message
-      }
-      return thunkAPI.rejectWithValue(message)
+      return thunkAPI.rejectWithValue(e)
     }
   }
 )
@@ -25,11 +21,7 @@ export const fetchUsers = createAsyncThunk(
       const response = await axios.get(API_USERS)
       return response.data
     } catch (e) {
-      let message = 'Error'
-      if (e instanceof Error) {
-        message = e.message
-      }
-      return thunkAPI.rejectWithValue(message)
+      return thunkAPI.rejectWithValue(e)
     }
   }
 )
@@ -41,11 +33,7 @@ export const fetchUserId = createAsyncThunk(
       const response = await axios.get(API_USER_ID + id)
       return response.data
     } catch (e) {
-      let message = 'Error'
-      if (e instanceof Error) {
-        message = e.message
-      }
-      return thunkAPI.rejectWithValue(message)
+      return thunkAPI.rejectWithValue(e)
     }
   }
 )
@@ -57,11 +45,7 @@ export const fetchUserPosts = createAsyncThunk(
       const response = await axios.get(API_USER_POSTS + id)
       return response.data
     } catch (e) {
-      let message = 'Error'
-      if (e instanceof Error) {
-        message = e.message
-      }
-      return thunkAPI.rejectWithValue(message)
+      return thunkAPI.rejectWithValue(e)
     }
   }
 )

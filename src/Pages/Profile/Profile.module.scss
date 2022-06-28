@@ -2,20 +2,6 @@
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  .profile_card {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
-    margin: 0.5rem;
-    border: 0.2rem solid black;
-    line-height: 1.5rem;
-    .profile_head {
-      a {
-        display: block;
-        text-decoration: none;
-      }
-    }
-  }
   .posts_wrapper {
     display: flex;
     flex-direction: column;
@@ -25,12 +11,6 @@
     align-items: center;
     .post_part {
       font-size: 1.5rem;
-    }
-    .post_card {
-      min-width: 100%;
-      padding: 0.5rem;
-      margin: 0.5rem 0;
-      border: 0.2rem solid black;
     }
   }
 }

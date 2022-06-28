@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from "react-redux";
+import NewsCard from "../../Components/Cards/NewsCard/NewsCard";
 import { fetchNews } from "../../store/reducers/ActionCreators";
 import classes from "./News.module.scss";
 
@@ -16,19 +17,16 @@ const News = () => {
       {status && <p>Loading...</p>}
       {error && <p>Error {error}</p>}
       <div className={classes.news}>
-        {data?.map(
-          ({ id, body, title }) => (
-            <div className={classes.news_card} key={id}>
-              <p className={classes.author}>
-                <b>Number:</b> {id}
-              </p>
-              <p className={classes.content}>{body}</p>
-              <p className={classes.description}>
-                <b>Description:</b> {title}
-              </p>
-            </div>
-          )
-        )}
+        {data?.map(({ id, body, title }) => (
+          <NewsCard
+            key={id}
+            id={id}
+            body={body}
+            title={title}
+            author_title={"Author: "}
+            description_title={"Description: "}
+          />
+        ))}
       </div>
     </>
   );

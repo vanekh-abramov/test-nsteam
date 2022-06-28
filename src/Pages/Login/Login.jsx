@@ -4,11 +4,15 @@ import { useNavigate } from "react-router-dom";
 import classes from "./Login.module.scss";
 import { authLogin } from "../../store/reducers/LoginSlice";
 import LoginForm from "../../Components/LoginForm/LoginForm";
+import { PROFILE_ROUTE } from "../../constants/routerLinks";
+import { ANOTHER_ERR, EMPTY_FIELDS } from "../../constants/warningMessages";
+import { fakeUser } from "../../fakeUser";
 
 const Login = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
+  const areEmptyFields = !login.trim() || !password.trim();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -23,23 +27,13 @@ const Login = () => {
 
   const submitLogin = (e) => {
     e.preventDefault();
-    // const re =
-    //   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    // if (!re.test(String(e.target.value).toLowerCase())) {
-    //   setEmailError("Invalid email");
-    // } else if (login === "Admin" && password === "12345") {
-    //   dispatch(authLogin(true));
-    //   navigate("/profile/:1");
-    // } else {
-    //   setEmailError("Another error")
-    // }
-    if (login.trim() === "" || password.trim() === "") {
-      setEmailError("Fields can`t be empty");
-    } else if (login === "Admin" && password === "12345") {
+    if (areEmptyFields) {
+      setEmailError(EMPTY_FIELDS);
+    } else if (login === fakeUser.username && password === fakeUser.password) {
       dispatch(authLogin(true));
-      navigate("/profile/:1");
+      navigate(`${PROFILE_ROUTE}/:1`);
     } else {
-      setEmailError("Another error");
+      setEmailError(ANOTHER_ERR);
     }
   };
 
@@ -51,6 +45,9 @@ const Login = () => {
         inputLogin={inputLogin}
         inputPassword={inputPassword}
         emailError={emailError}
+        login_subtitle={"Login"}
+        password_subtitle={"Password"}
+        button_title={"Submit"}
       />
     </div>
   );
