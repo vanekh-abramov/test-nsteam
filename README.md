@@ -1,5 +1,5 @@
 **Deploy on Netlify**: https://lighthearted-dieffenbachia-f4c866.netlify.app/
-**Deploy on GitHubPages**: https://test-nsteam.github.io/
+**Deploy on GitHubPages**: None
 Login: Admin
 Password: 12345
 
